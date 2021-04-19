@@ -45,6 +45,31 @@ var ACTIVITYCHECKER = ACTIVITYCHECKER || (function(){
             document.addEventListener("touchmove", self.resetTimer, false);
              
             self.startTimer();
+		},
+		registerOpenTab: ()=>{
+			let tabsOpen = 1;
+	        while (localStorage.getItem('openTab' + tabsOpen) !== null) {
+	            tabsOpen++;
+	        }
+	          
+	        localStorage.setItem('openTab' + tabsOpen, 'open');
+	        if (localStorage.getItem('openTab2') !== null) {
+	            window.alert('This application is already running in ' + (tabsOpen - 1) + ' other browser tab.')
+	            window.location.href = self.url;
+	        }
+		},
+		unregisterOpenTab: ()=>{
+			let tabsOpen = 1;
+          	while (localStorage.getItem('openTab' + tabsOpen) !== null) {
+            	tabsOpen++;
+          	}
+          	localStorage.removeItem('openTab' + (tabsOpen - 1));
+		},
+		tabOpen: ()=>{
+			window.addEventListener('load', self.registerOpenTab);
+		},
+		tabDuplicate : ()=>{
+			window.addEventListener('beforeunload', self.unregisterOpenTab);
 		}
 	}
 	return self;
