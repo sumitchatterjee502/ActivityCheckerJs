@@ -21,7 +21,7 @@ This library will help you for user activity checker using javascript</p>
 </script>
 </pre>
 </p>
-<p>If need to avoid duplicate tabs open on same url then you should use below function on your project</p>
+<p>If need to avoid duplicate tabs are open into the browser for same url then you should use below function on your project</p>
 <p>
 <pre>
 <script>
